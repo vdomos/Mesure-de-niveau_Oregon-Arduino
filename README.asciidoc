@@ -6,10 +6,10 @@
 
 == Description
 
-Il est possible d'émuler une sonde Oregon avec un Arduino et un émetteur RF 433MHz avec l'execelent code disponible ici:
+Il est possible d'émuler une sonde Oregon avec un Arduino et un émetteur RF 433MHz avec l'excelent code disponible ici:
 http://connectingstuff.net/blog/encodage-protocoles-oregon-scientific-sur-arduino/
 
-Il est possible d'emettre des trames de 2 types de sondes Oregon comme la sonde de température **thn132n** et la sonde de température/humidité **thgr228n**.
+Il est possible d'emettre des trames de 2 types de sondes Oregon: la sonde de température **thn132n** et la sonde de température/humidité **thgr228n**.
 
 L'intéret n'est pas de créer une sonde de température/humidité à base d'Arduino, cela ne reviendrai pas forcement moins cher qu'une sonde vendu dans le commerce.
 
