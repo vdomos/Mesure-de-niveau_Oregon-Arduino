@@ -31,7 +31,7 @@ L'usage décrit ici sera de pouvoir mesurer la hauteur d'une cuve (dans mon cas 
 
 -- Shéma
 
-image::images/OregonHCSR04_ATtiny85_Wdt.png[caption="", title="", alt="", width="400", link="images/OregonHCSR04_ATtiny85_Wdt.png"]
+image::images/OregonHCSR04_ATtiny85_Wdt.png[caption="", title="", alt="", width="800", link="images/OregonHCSR04_ATtiny85_Wdt.png"]
 
 
 {nbsp}
