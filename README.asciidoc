@@ -6,7 +6,7 @@
 
 == Description
 
-Il est possible d'émuler une sonde Oregon avec un Arduino et un émetteur RF 433MHz avec l'excelent code disponible ici:
+Il est possible d'émuler une sonde Oregon avec un Arduino et un émetteur RF 433MHz avec l'excellent code disponible ici:
 http://connectingstuff.net/blog/encodage-protocoles-oregon-scientific-sur-arduino/
 
 Il est possible d'emettre des trames de 2 types de sondes Oregon: la sonde de température **thn132n** et la sonde de température/humidité **thgr228n**.
@@ -22,23 +22,24 @@ L'usage décrit ici sera de pouvoir mesurer la hauteur d'une cuve (dans mon cas 
 
 == Matériel
 
-* Un ci AVR compatible Arduino: ATtiny85 (Voir ce lien http://highlowtech.org/?p=1695 pour programmer l'ATtiny85 sous Arduino.) 
-* Senseur ultrason - HC-SR04
-* Emetteur RF 433MHz AM (ici un Laipac TLP434A)
+* Un ci AVR compatible Arduino: **ATtiny85** 
+(Voir ce lien http://highlowtech.org/?p=1695 pour programmer l'ATtiny85 sous Arduino.) 
+* Senseur ultrason - **HC-SR04**
+* Emetteur RF 433MHz AM (ici un Laipac **TLP434A**)
 
 {nbsp}
 
 -- Shéma
 
-Shéma papier ?
-Frizing ?
+image::images/OregonHCSR04_ATtiny85_Wdt.png[caption="", title="", alt="", width="400", link="images/OregonHCSR04_ATtiny85_Wdt.png"]
 
 
 {nbsp}
 
 -- Code
 
-Sketch Arduino: SondeOregonHCSR04.ino
+Sketch Arduino: link:src/SondeOregonHCSR04.ino[SondeOregonHCSR04.ino]
+
 Le programme va émettre le niveau de sel restant dans la cuve codé dans une trame Oregon comme une donnée température 
 (la donnée batterie n'est pas utlisée est forcée à '1' soit 90% dans le programme.)
 
