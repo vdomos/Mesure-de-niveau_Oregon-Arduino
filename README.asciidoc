@@ -1,0 +1,85 @@
+= Sonde Oregon Arduino - mesure de niveau
+
+:toc:
+
+{nbsp}
+
+== Description
+
+Il est possible d'émuler une sonde Oregon avec un Arduino et un émetteur RF 433MHz avec l'execelent code disponible ici:
+http://connectingstuff.net/blog/encodage-protocoles-oregon-scientific-sur-arduino/
+
+Il est possible d'emettre des trames de 2 types de sondes Oregon comme la sonde de température **thn132n** et la sonde de température/humidité **thgr228n**.
+
+L'intéret n'est pas de créer une sonde de température/humidité à base d'Arduino, cela ne reviendrai pas forcement moins cher qu'une sonde vendu dans le commerce.
+
+L'idée est d'utliser ce protocole pour envoyer des données de capteur autres que ceux de base en ayant déjà un module récepteur comme le rfxcom.
+
+L'usage décrit ici sera de pouvoir mesurer la hauteur d'une cuve (dans mon cas un bac à sel d'un adoucisseur) et d'envoyer la donnée sous le protocole Oregon.
+
+
+{nbsp}
+
+== Matériel
+
+* Un ci Arduino: ATtiny85 (Voir ce lien http://highlowtech.org/?p=1695 pour programmer l'ATtiny85 sous Arduino.) 
+* Senseur ultrason - HC-SR04
+* Emetteur RF 433MHz AM (ici un Laipac TLP434A)
+
+{nbsp}
+
+-- Shéma
+
+Shéma papier ?
+Frizing ?
+
+
+{nbsp}
+
+-- Code
+
+Sketch Arduino: SondeOregonHCSR04.ino
+Le programme va émettre le niveau de sel restant dans la cuve codé dans une trame Oregon comme une donnée température 
+(la donnée batterie n'est pas utlisée est forcée à '1' soit 90% dans le programme.)
+
+Elle sera donc vu par le rfxcom comme une sonde de température, cela impliquera que le logiciel domotique en amont devra interpréter cette donnée autrement.
+
+Ci-dessous réception de la trame émise par un rfxcom et convertit en message xPL.
+
+---------------------------------------------------------------------------------------------------
+2016-11-02 23:40:35  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='temp' current='26' }
+2016-11-02 23:40:35  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='battery' current='90' units='%' }
+2016-11-02 23:43:07  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='temp' current='26' }
+2016-11-02 23:43:07  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='battery' current='90' units='%' }
+2016-11-02 23:45:39  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='temp' current='26' }
+2016-11-02 23:45:39  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='battery' current='90' units='%' }
+---------------------------------------------------------------------------------------------------
+
+
+Le watchdog est utlisé pour réveillé l'ATtiny85 par intervale aprés mise en veille, cela devrait permettre une utlisation sur batterie (non testé). 
+
+Il est possible de créer plusieurs sondes comptatibles Oregon en changeant le code de la constante OREGON_ID dans le sketch.
+
+{nbsp}
+
+-- Tests en situation
+
+Photos
+* 2016_0305_115314_1.jpg
+* 2016_0304_174628_1.jpg
+* 2016_0321_201923_1.jpg
+* 2016_0328_133232_1.jpg
+* 2016_0328_133317_1.jpg
+* 2016_1101_nnnnnn...
+
+
+
+Bargraphes
+
+
+
+----
+{nbsp}
+
+'''
+~21/3/2016~
