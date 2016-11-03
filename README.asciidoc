@@ -33,6 +33,9 @@ L'usage décrit ici sera de pouvoir mesurer la hauteur d'une cuve (dans mon cas 
 * Senseur ultrason - **HC-SR04**
 * Emetteur RF 433MHz AM (ici un Laipac **TLP434A**)
 
+Voir ce lien http://highlowtech.org/?p=1695 pour programmer l'ATtiny85 sous Arduino.
+
+
 {nbsp}
 
 === Shéma
@@ -44,15 +47,13 @@ image::images/OregonHCSR04_ATtiny85_Wdt.png[caption="", title="", alt="", width=
 
 === Code
 
-WARNING: L'ATtiny85 doit être configuré en horloge 8 MHz pour respecter les timing RF
+**ATTENTION**: L'ATtiny85 doit être configuré en horloge 8 MHz pour respecter les timing RF
 
 Cela peut se faire dans l'IDE Arduino: une fois que l'ATtiny est connecté et testé avec un simple sketch "blink", 
 choisir le type de carte “ATtiny45 (8 MHz)” et lancer “Burn Bootloader” (Graver la séquence d'initalisation) du menu "Outils". 
 Il suffira de le faire qu'une seul fois.
 
 Sketch Arduino: link:src/OregonHCSR04_ATtiny85_Wdt.ino[OregonHCSR04_ATtiny85_Wdt.ino]
-
-(Voir ce lien http://highlowtech.org/?p=1695 pour programmer l'ATtiny85 sous Arduino.) 
 
 Le programme va émettre le niveau de sel (en cm) restant dans la cuve codé dans une trame Oregon comme une donnée température 
 (la donnée batterie n'est pas utlisée est forcée à '1' dans le programme soit 90% vu par le rfxcom.)

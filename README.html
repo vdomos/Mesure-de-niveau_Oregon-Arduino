@@ -774,6 +774,7 @@ Emetteur RF 433MHz AM (ici un Laipac <strong>TLP434A</strong>)
 </p>
 </li>
 </ul></div>
+<div class="paragraph"><p>Voir ce lien <a href="http://highlowtech.org/?p=1695">http://highlowtech.org/?p=1695</a> pour programmer l&#8217;ATtiny85 sous Arduino.</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="sect2">
 <h3 id="_shéma">Shéma</h3>
@@ -789,19 +790,11 @@ Emetteur RF 433MHz AM (ici un Laipac <strong>TLP434A</strong>)
 </div>
 <div class="sect2">
 <h3 id="_code">Code</h3>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">- L&#8217;ATtiny85 doit être configuré en horloge 8 MHz pour respecter les timing RF</td>
-</tr></table>
-</div>
+<div class="paragraph"><p><strong>ATTENTION</strong>: L&#8217;ATtiny85 doit être configuré en horloge 8 MHz pour respecter les timing RF</p></div>
 <div class="paragraph"><p>Cela peut se faire dans l&#8217;IDE Arduino: une fois que l&#8217;ATtiny est connecté et testé avec un simple sketch "blink",
 choisir le type de carte “ATtiny45 (8 MHz)” et lancer “Burn Bootloader” (Graver la séquence d&#8217;initalisation) du menu "Outils".
 Il suffira de le faire qu&#8217;une seul fois.</p></div>
 <div class="paragraph"><p>Sketch Arduino: <a href="src/OregonHCSR04_ATtiny85_Wdt.ino">OregonHCSR04_ATtiny85_Wdt.ino</a></p></div>
-<div class="paragraph"><p>(Voir ce lien <a href="http://highlowtech.org/?p=1695">http://highlowtech.org/?p=1695</a> pour programmer l&#8217;ATtiny85 sous Arduino.)</p></div>
 <div class="paragraph"><p>Le programme va émettre le niveau de sel (en cm) restant dans la cuve codé dans une trame Oregon comme une donnée température
 (la donnée batterie n&#8217;est pas utlisée est forcée à <em>1</em> dans le programme soit 90% vu par le rfxcom.)</p></div>
 <div class="paragraph"><p>Elle sera donc vu par le rfxcom comme une sonde de température, cela impliquera que le logiciel domotique en amont devra interpréter cette donnée en conséquence.</p></div>
@@ -944,7 +937,7 @@ Sonde monoxide de carbone (à base de module MQ7)
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2016-11-03 21:53:21 CET
+ 2016-11-03 23:45:41 CET
 </div>
 </div>
 </body>
