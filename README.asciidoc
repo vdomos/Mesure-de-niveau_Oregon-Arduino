@@ -44,7 +44,7 @@ image::images/OregonHCSR04_ATtiny85_Wdt.png[caption="", title="", alt="", width=
 
 === Code
 
-ATTENTION: - L'ATtiny85 doit être configuré en hhorloge 8 MHz pour respecter les timing RF
+ATTENTION: - L'ATtiny85 doit être configuré en horloge 8 MHz pour respecter les timing RF
 
 Cela peut se faire dans l'IDE Arduino: une fois que l'ATtiny est connecté et testé avec un simple sketch "blink", 
 choisir le type de carte “ATtiny45 (8 MHz)” et lancer “Burn Bootloader” (Graver la séquence d'initalisation) du menu "Outils". 
@@ -89,13 +89,19 @@ il est possible d'uiliser une carte Arduino de base pour programmmer l'ATtiny85.
 .Montages en test
 [cols="^,^,^",]
 |=======================================================================
-|image:images/OregonHCSR04_ATtiny85_Wdt_2.jpg[caption="", title="Test avec un Arduino", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_2.jpg"] 
+|image:images/OregonHCSR04_ATtiny85_Wdt_2.jpg[caption="", title="Test avec un Arduino", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_2.jpg"]
+link:1[.]
 |image:images/OregonHCSR04_ATtiny85_Wdt_3.jpg[caption="", title="Version ATtiny85", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_3.jpg"] 
+link:1[.]
 |image:images/OregonHCSR04_ATtiny85_Wdt_4.jpg[caption="", title="", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_4.jpg"] 
+link:1[.]
 
 |image:images/OregonHCSR04_ATtiny85_Wdt_5.jpg[caption="", title="Avec programmateur AVR", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_5.jpg"] 
+link:1[.]
 |image:images/OregonHCSR04_ATtiny85_Wdt_6.jpg[caption="", title="Vue rapprochée", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_6.jpg"] 
+link:1[.]
 |image:images/OregonHCSR04_ATtiny85_Wdt_7.jpg[caption="", title="Fixé sur la cuve", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_7.jpg"] 
+link:1[.]
 |=======================================================================
 
 
@@ -118,11 +124,7 @@ image:images/OregonHCSR04_ATtiny85_Wdt_1.png[caption="", title="Graphes sur 30 j
 
 === Autre usage de sonde
 
-* Sonde luminosité Arduino/Oregon à base d'ATtiny85:
-
-image:images/OregonSol_ATtiny85_Wdt_1.png[caption="", title="", alt="Graphes sur 36 heures", width="800", link="images/OregonSol_ATtiny85_Wdt_1.png"] 
-
-
+* Sonde luminosité Arduino/Oregon à base d'ATtiny85
 * Sonde monoxide de carbone (à base de module MQ7)
 
 ...
