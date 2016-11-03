@@ -85,12 +85,14 @@ Les fils reliés au cable en nappe ne servent qu'à la programmation de l'AVR AT
 
 |image:images/OregonHCSR04_ATtiny85_Wdt_5.jpg[caption="", title="Avec programmateur AVR", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_5.jpg"] 
 |image:images/OregonHCSR04_ATtiny85_Wdt_6.jpg[caption="", title="Vue rapprochée", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_6.jpg"] 
-|image:images/OregonHCSR04_ATtiny85_Wdt_7.jpg[caption="", title="Avec fixation", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_7.jpg"] 
+|image:images/OregonHCSR04_ATtiny85_Wdt_7.jpg[caption="", title="Fixé sur la cuve", alt="", width="300", link="images/OregonHCSR04_ATtiny85_Wdt_7.jpg"] 
 |=======================================================================
 
 
 
 * Bargraphes
+
+Graphes généré à partir des données en base MySql:
 
 image:images/OregonHCSR04_ATtiny85_Wdt_1.png[caption="", title="s", alt="", width="800", link="images/OregonHCSR04_ATtiny85_Wdt_1.png"] 
 
