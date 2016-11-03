@@ -51,7 +51,7 @@ Le programme va émettre le niveau de sel restant dans la cuve codé dans une tr
 
 Elle sera donc vu par le rfxcom comme une sonde de température, cela impliquera que le logiciel domotique en amont devra interpréter cette donnée autrement.
 
-Ci-dessous réception de la trame émise par un rfxcom et convertit en message xPL.
+Ci-dessous réception par un rfxcom de la trame émise et convertit en message xPL.
 
 ---------------------------------------------------------------------------------------------------
 2016-11-02 23:40:35  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='temp' current='26' }

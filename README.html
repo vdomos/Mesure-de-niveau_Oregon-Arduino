@@ -744,11 +744,12 @@ asciidoc.install();
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Il est possible d'émuler une sonde Oregon avec un Arduino et un émetteur RF 433MHz avec l&#8217;excellent code disponible ici:
+<div class="paragraph"><p>Un Arduino peut émuler une sonde Oregon avec un émetteur RF 433MHz et l&#8217;excellent code disponible ici:
 <a href="http://connectingstuff.net/blog/encodage-protocoles-oregon-scientific-sur-arduino/">http://connectingstuff.net/blog/encodage-protocoles-oregon-scientific-sur-arduino/</a></p></div>
 <div class="paragraph"><p>Il est possible d&#8217;emettre des trames de 2 types de sondes Oregon: la sonde de température <strong>thn132n</strong> et la sonde de température/humidité <strong>thgr228n</strong>.</p></div>
 <div class="paragraph"><p>L&#8217;intéret n&#8217;est pas de créer une sonde de température/humidité à base d&#8217;Arduino, cela ne reviendrai pas forcement moins cher qu&#8217;une sonde vendu dans le commerce.</p></div>
-<div class="paragraph"><p>L&#8217;idée est d&#8217;utliser ce protocole pour envoyer des données de capteur autres que ceux de base en ayant déjà un module récepteur comme le rfxcom.</p></div>
+<div class="paragraph"><p>L&#8217;idée est d&#8217;utliser ce protocole pour envoyer des données de capteur autres que température/humidité/&#8230;
+Un récepteur <strong>rfxcom</strong> ou compatible permettra de recevoir ces sonde atypiques.</p></div>
 <div class="paragraph"><p>L&#8217;usage décrit ici sera de pouvoir mesurer la hauteur d&#8217;une cuve (dans mon cas un bac à sel d&#8217;un adoucisseur) et d&#8217;envoyer la donnée sous le protocole Oregon.</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 </div>
@@ -790,7 +791,7 @@ Emetteur RF 433MHz AM (ici un Laipac <strong>TLP434A</strong>)
 <div class="paragraph"><p>Le programme va émettre le niveau de sel restant dans la cuve codé dans une trame Oregon comme une donnée température
 (la donnée batterie n&#8217;est pas utlisée est forcée à <em>1</em> dans le programme soit 90%.)</p></div>
 <div class="paragraph"><p>Elle sera donc vu par le rfxcom comme une sonde de température, cela impliquera que le logiciel domotique en amont devra interpréter cette donnée autrement.</p></div>
-<div class="paragraph"><p>Ci-dessous réception de la trame émise par un rfxcom et convertit en message xPL.</p></div>
+<div class="paragraph"><p>Ci-dessous réception par un rfxcom de la trame émise et convertit en message xPL.</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>2016-11-02 23:40:35  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='temp' current='26' }
@@ -800,8 +801,9 @@ Emetteur RF 433MHz AM (ici un Laipac <strong>TLP434A</strong>)
 2016-11-02 23:45:39  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='temp' current='26' }
 2016-11-02 23:45:39  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='battery' current='90' units='%' }</code></pre>
 </div></div>
-<div class="paragraph"><p>Le watchdog est utlisé pour réveillé l&#8217;ATtiny85 par intervale aprés mise en veille, cela devrait permettre une utlisation sur batterie (non testé).</p></div>
-<div class="paragraph"><p>Il est possible de créer plusieurs sondes comptatibles Oregon en changeant le code de la constante OREGON_ID dans le sketch.</p></div>
+<div class="paragraph"><p>Prévoir une alimentaion de 5V.
+Le watchdog est utlisé pour réveillé l&#8217;ATtiny85 par intervale aprés mise en veille, cela devrait permettre une utlisation sur batterie (non testé).</p></div>
+<div class="paragraph"><p>Il est possible de créer plusieurs sondes comptatibles Oregon en changeant le code de la constante <strong>OREGON_ID</strong> dans le sketch.</p></div>
 <div class="paragraph"><p>&#160;</p></div>
 <div class="paragraph"><p>&#8212;&#8201;Tests en situation</p></div>
 <div class="ulist"><ul>
@@ -811,7 +813,7 @@ Photos:
 </p>
 </li>
 </ul></div>
-<div class="paragraph"><p>Les fils reliés au cable en nappe ne serve qu'à la programmation de l&#8217;AVR ATtiny85.</p></div>
+<div class="paragraph"><p>Les fils reliés au cable en nappe ne servent qu'à la programmation de l&#8217;AVR ATtiny85.</p></div>
 <div class="tableblock">
 <table rules="all"
 width="100%"
@@ -842,17 +844,17 @@ cellspacing="0" cellpadding="4">
 <tr>
 <td align="center" valign="top"><p class="table"><span class="image">
 <a class="image" href="images/OregonHCSR04_ATtiny85_Wdt_5.jpg">
-<img src="images/OregonHCSR04_ATtiny85_Wdt_5.jpg" alt="Avec programmateur AVR" width="300" title="" />
+<img src="images/OregonHCSR04_ATtiny85_Wdt_5.jpg" alt="" width="300" title="Avec programmateur AVR" />
 </a>
 </span></p></td>
 <td align="center" valign="top"><p class="table"><span class="image">
 <a class="image" href="images/OregonHCSR04_ATtiny85_Wdt_6.jpg">
-<img src="images/OregonHCSR04_ATtiny85_Wdt_6.jpg" alt="Vue rapprochée" width="300" title="" />
+<img src="images/OregonHCSR04_ATtiny85_Wdt_6.jpg" alt="" width="300" title="Vue rapprochée" />
 </a>
 </span></p></td>
 <td align="center" valign="top"><p class="table"><span class="image">
 <a class="image" href="images/OregonHCSR04_ATtiny85_Wdt_7.jpg">
-<img src="images/OregonHCSR04_ATtiny85_Wdt_7.jpg" alt="" width="300" title="Avec fixation" />
+<img src="images/OregonHCSR04_ATtiny85_Wdt_7.jpg" alt="" width="300" title="Fixé sur la cuve" />
 </a>
 </span></p></td>
 </tr>
@@ -866,6 +868,7 @@ Bargraphes
 </p>
 </li>
 </ul></div>
+<div class="paragraph"><p>Graphes généré à partir des données en base MySql:</p></div>
 <div class="paragraph"><p><span class="image">
 <a class="image" href="images/OregonHCSR04_ATtiny85_Wdt_1.png">
 <img src="images/OregonHCSR04_ATtiny85_Wdt_1.png" alt="" width="800" title="s" />
@@ -881,7 +884,7 @@ Bargraphes
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2016-11-03 10:25:02 CET
+ 2016-11-03 10:35:36 CET
 </div>
 </div>
 </body>
