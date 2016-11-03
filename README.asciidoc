@@ -11,6 +11,7 @@ asciidoc -o README.html README.asciidoc
 == Description
 
 Un Arduino peut émuler une sonde Oregon avec un émetteur RF 433MHz et l'excellent code disponible ici:
+
 http://connectingstuff.net/blog/encodage-protocoles-oregon-scientific-sur-arduino/
 
 Il est possible d'emettre des trames de 2 types de sondes Oregon: la sonde de température **thn132n** et la sonde de température/humidité **thgr228n**.
@@ -18,7 +19,8 @@ Il est possible d'emettre des trames de 2 types de sondes Oregon: la sonde de te
 L'intéret n'est pas de créer une sonde de température/humidité à base d'Arduino, cela ne reviendrai pas forcement moins cher qu'une sonde vendu dans le commerce.
 
 L'idée est d'utliser ce protocole pour envoyer des données de capteur autres que température/humidité/... 
-Un récepteur **rfxcom** ou compatible permettra de recevoir ces sonde atypiques.
+
+Un récepteur **rfxcom** ou compatible permettra de recevoir ces sondes atypiques.
 
 L'usage décrit ici sera de pouvoir mesurer la hauteur d'une cuve (dans mon cas un bac à sel d'un adoucisseur) et d'envoyer la donnée sous le protocole Oregon.
 
@@ -33,23 +35,29 @@ L'usage décrit ici sera de pouvoir mesurer la hauteur d'une cuve (dans mon cas 
 
 {nbsp}
 
--- Shéma
+=== Shéma
 
 image::images/OregonHCSR04_ATtiny85_Wdt.png[caption="", title="", alt="", width="600", link="images/OregonHCSR04_ATtiny85_Wdt.png"]
 
 
 {nbsp}
 
--- Code
+=== Code
 
-Sketch Arduino: link:src/SondeOregonHCSR04.ino[SondeOregonHCSR04.ino]
+ATTENTION: - L'ATtiny85 doit être configuré en hhorloge 8 MHz pour respecter les timing RF
+
+Cela peut se faire dans l'IDE Arduino: une fois que l'ATtiny est connecté et testé avec un simple sketch "blink", 
+choisir le type de carte “ATtiny45 (8 MHz)” et lancer “Burn Bootloader” (Graver la séquence d'initalisation) du menu "Outils". 
+Il suffira de le faire qu'une seul fois.
+
+Sketch Arduino: link:src/OregonHCSR04_ATtiny85_Wdt.ino[OregonHCSR04_ATtiny85_Wdt.ino]
 
 (Voir ce lien http://highlowtech.org/?p=1695 pour programmer l'ATtiny85 sous Arduino.) 
 
-Le programme va émettre le niveau de sel restant dans la cuve codé dans une trame Oregon comme une donnée température 
-(la donnée batterie n'est pas utlisée est forcée à '1' dans le programme soit 90%.)
+Le programme va émettre le niveau de sel (en cm) restant dans la cuve codé dans une trame Oregon comme une donnée température 
+(la donnée batterie n'est pas utlisée est forcée à '1' dans le programme soit 90% vu par le rfxcom.)
 
-Elle sera donc vu par le rfxcom comme une sonde de température, cela impliquera que le logiciel domotique en amont devra interpréter cette donnée autrement.
+Elle sera donc vu par le rfxcom comme une sonde de température, cela impliquera que le logiciel domotique en amont devra interpréter cette donnée en conséquence.
 
 Ci-dessous réception par un rfxcom de la trame émise et convertit en message xPL.
 
@@ -62,18 +70,20 @@ Ci-dessous réception par un rfxcom de la trame émise et convertit en message x
 2016-11-02 23:45:39  xpl-trig { hop=1 source=bnz-rfxcomrx.hera target=* } sensor.basic { device='thn132n.bb' type='battery' current='90' units='%' }
 ---------------------------------------------------------------------------------------------------
 
-Prévoir une alimentaion de 5V.
-Le watchdog est utlisé pour réveillé l'ATtiny85 par intervale aprés mise en veille, cela devrait permettre une utlisation sur batterie (non testé). 
-
 Il est possible de créer plusieurs sondes comptatibles Oregon en changeant le code de la constante **OREGON_ID** dans le sketch.
+
+Le montage doit être alimenter sous une alimentaion de 5V. Le watchdog est utlisé pour réveillé l'ATtiny85 par intervale aprés mise en veille, 
+cela devrait permettre une utlisation sur batterie (non testé). 
+
 
 {nbsp}
 
--- Tests en situation
+=== Tests en situation
 
 * Photos:
 
-Les fils reliés au cable en nappe ne servent qu'à la programmation de l'AVR ATtiny85.
+Les fils reliés au cable en nappe ne servent qu'à la programmation de l'AVR ATtiny85 (dans ce cas un programmateur AVR USBTiny).
+il est possible d'uiliser une carte Arduino de base pour programmmer l'ATtiny85.
 
 
 .Montages en test
@@ -94,9 +104,29 @@ Les fils reliés au cable en nappe ne servent qu'à la programmation de l'AVR AT
 
 Graphes généré à partir des données en base MySql:
 
-image:images/OregonHCSR04_ATtiny85_Wdt_1.png[caption="", title="s", alt="", width="800", link="images/OregonHCSR04_ATtiny85_Wdt_1.png"] 
+image:images/OregonHCSR04_ATtiny85_Wdt_1.png[caption="", title="Graphes sur 30 jours", alt="", width="800", link="images/OregonHCSR04_ATtiny85_Wdt_1.png"] 
 
 {nbsp}
+
+
+=== A faire
+
+* Circuit imprimé pour le montage final.
+* Renvoyer la hauteur en pourcentage au lieu de cm
+* Déduire des graphes obtenus, la consommation de sel.
+
+
+=== Autre usage de sonde
+
+* Sonde luminosité Arduino/Oregon à base d'ATtiny85:
+
+image:images/OregonSol_ATtiny85_Wdt_1.png[caption="", title="", alt="Graphes sur 36 heures", width="800", link="images/OregonSol_ATtiny85_Wdt_1.png"] 
+
+
+* Sonde monoxide de carbone (à base de module MQ7)
+
+...
+
 
 '''
 ~21/3/2016~
