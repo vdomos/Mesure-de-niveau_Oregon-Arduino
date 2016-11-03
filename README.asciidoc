@@ -44,7 +44,7 @@ image::images/OregonHCSR04_ATtiny85_Wdt.png[caption="", title="", alt="", width=
 
 === Code
 
-ATTENTION: - L'ATtiny85 doit être configuré en horloge 8 MHz pour respecter les timing RF
+WARNING: - L'ATtiny85 doit être configuré en horloge 8 MHz pour respecter les timing RF
 
 Cela peut se faire dans l'IDE Arduino: une fois que l'ATtiny est connecté et testé avec un simple sketch "blink", 
 choisir le type de carte “ATtiny45 (8 MHz)” et lancer “Burn Bootloader” (Graver la séquence d'initalisation) du menu "Outils". 
@@ -119,7 +119,7 @@ image:images/OregonHCSR04_ATtiny85_Wdt_1.png[caption="", title="Graphes sur 30 j
 
 * Circuit imprimé pour le montage final.
 * Renvoyer la hauteur en pourcentage au lieu de cm
-* Déduire des graphes obtenus, la consommation de sel.
+* Déduire la consommation de sel des graphes obtenus.
 
 
 === Autre usage de sonde
